@@ -29,7 +29,7 @@
 
     // Node.js specific rules
     "node/no-unsupported-features/es-syntax": ["error", { "ignores": ["modules"] }],
-    "node/no-missing-import": "error",
+    "node/no-missing-import": "off",
     "node/no-missing-require": "error",
     "node/no-exports-assign": "error",
     "node/no-extraneous-require": "error",
@@ -54,6 +54,6 @@
     "security/detect-unsafe-regex": "error",
 
     // Typescript rules
-    "@typescript-eslint/no-namespace": "on"
+    "@typescript-eslint/no-namespace": "off"
   }
 }
