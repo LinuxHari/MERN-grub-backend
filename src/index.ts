@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import myUserRoutes from "./routes/MyUserRoute"
+import myUserRoutes from './routes/MyUserRoute';
 
 const environment = process.env.NODE_ENV || 'development';
 
@@ -17,7 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/api/my/user", myUserRoutes)
+app.use('/api/my/user', myUserRoutes);
 
 const MONGO_URL = process.env.MONGO_URL;
 

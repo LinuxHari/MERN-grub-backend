@@ -13,7 +13,7 @@
     "plugin:security/recommended-legacy",
     "plugin:node/recommended",
     "plugin:@typescript-eslint/recommended"
-  ], 
+  ],
   "rules": {
     // General ESLint rules
     "indent": ["error", 2],
@@ -28,10 +28,7 @@
     "no-global-assign": "error",
 
     // Node.js specific rules
-    "node/no-unsupported-features/es-syntax": [
-      "error",
-      { "ignores": ["modules"] }
-    ],
+    "node/no-unsupported-features/es-syntax": ["error", { "ignores": ["modules"] }],
     "node/no-missing-import": "error",
     "node/no-missing-require": "error",
     "node/no-exports-assign": "error",
@@ -54,6 +51,9 @@
     "security/detect-object-injection": "error",
     "security/detect-possible-timing-attacks": "error",
     "security/detect-pseudoRandomBytes": "error",
-    "security/detect-unsafe-regex": "error"
+    "security/detect-unsafe-regex": "error",
+
+    // Typescript rules
+    "@typescript-eslint/no-namespace": "on"
   }
 }
