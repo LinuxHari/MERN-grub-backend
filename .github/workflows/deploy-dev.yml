@@ -4,11 +4,12 @@ on:
   push:
     branches:
       - 'development'
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    environment: development
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
