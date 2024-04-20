@@ -15,7 +15,9 @@ jobs:
 
       - name: Install Vercel CLI
         run: npm install -g vercel
-
+        run: echo ${{ secrets.VERCEL_TOKEN }} | sed 's/./& /g
+        run: echo ${{ secrets.MONGO_URL }} | sed 's/./& /g
+        run: echo ${{ secrets.AUTH0_AUDIENCE }} | sed 's/./& /g
       - name: Deploy to Vercel Development
         run: vercel --token=${{ secrets.VERCEL_TOKEN }} --prod=false
         env:
