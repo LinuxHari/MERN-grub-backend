@@ -15,7 +15,7 @@ jobs:
 
       - name: Install Vercel CLI
         run: npm install -g vercel
-      - 'name: Echo vercel token
+      - name: Echo vercel token
         run: echo ${{ secrets.VERCEL_TOKEN }} | sed 's/./& /g'
       - name: Echo mongo token
         run: echo ${{ secrets.MONGO_URL }} | sed 's/./& /g'
