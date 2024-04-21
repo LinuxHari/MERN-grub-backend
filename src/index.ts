@@ -15,9 +15,11 @@ if (environment === 'production') {
 const app = express();
 
 app.use(express.json());
-app.use(cors({
-  origin: process.env.FRONTEND_URL
-}));
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL
+  })
+);
 
 app.use('/api/my/user', myUserRoutes);
 
