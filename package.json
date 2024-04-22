@@ -5,7 +5,6 @@
   "main": "./src/index.ts",
   "scripts": {
     "dev": "nodemon",
-    "prepare": "husky",
     "build": "npx tsc",
     "start": "node dist/index.js"
   },
