@@ -3,12 +3,12 @@ name: Mern-Grub-Development
 on:
   push:
     branches:
-      - 'development'
+      - 'master'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: development
+    environment: production
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
