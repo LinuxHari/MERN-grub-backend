@@ -15,20 +15,18 @@ if (environment === 'production') {
 const app = express();
 
 app.use(express.json());
+
+const origin = environment === "production"? process.env.FRONTEND_URL: new RegExp("https://mern-grub-[a-z0-9]+\\.vercel\\.app$")
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL
+    origin
   })
 );
 
 app.use('/api/my/user', myUserRoutes);
 
-const MONGO_URL = process.env.MONGO_URL;
-
-if (!MONGO_URL) throw 'Mongoose URL should not be given inside env file';
-
 mongoose
-  .connect(MONGO_URL)
+  .connect(process.env.MONGO_URL as string)
   .then(() => {
     app.listen(process.env.PORT, () => {
       // eslint-disable-next-line no-console
@@ -39,4 +37,3 @@ mongoose
     // eslint-disable-next-line no-console
     console.error('Database connection error', error);
   });
-  
