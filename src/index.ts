@@ -16,7 +16,10 @@ const app = express();
 
 app.use(express.json());
 
-const origin = environment === "production"? process.env.FRONTEND_URL: new RegExp("https://mern-grub-[a-z0-9]+\\.vercel\\.app$")
+const origin =
+  environment === 'production'
+    ? process.env.FRONTEND_URL
+    : new RegExp('https://mern-grub-[a-z0-9]+\\.vercel\\.app$');
 app.use(
   cors({
     origin
