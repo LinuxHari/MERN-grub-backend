@@ -19,7 +19,8 @@ app.use(express.json());
 const origin =
   environment === 'production'
     ? process.env.FRONTEND_URL
-    : new RegExp('https://mern-grub-[a-z0-9]+\\.vercel\\.app$');
+    : new RegExp('https://mern-grub-[a-z0-9]{9}-hariharan-manohars-projects.vercel.app');
+
 app.use(
   cors({
     origin
