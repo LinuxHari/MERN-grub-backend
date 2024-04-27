@@ -2,7 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import myUserRoutes from './routes/MyUserRoute';
+import myUserRoute from './routes/MyUserRoute';
+import myRestaurantRoute from './routes/MyRestaurantRoute';
+import restaurantRoute from './routes/RestaurantRoute';
+import { v2 as cloudinary } from 'cloudinary';
 
 const environment = process.env.NODE_ENV || 'development';
 
@@ -11,6 +14,12 @@ if (environment === 'production') {
 } else if (environment === 'development') {
   dotenv.config({ path: '.env.development' });
 }
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 const app = express();
 
@@ -27,7 +36,9 @@ app.use(
   })
 );
 
-app.use('/api/my/user', myUserRoutes);
+app.use('/api/my/user', myUserRoute);
+app.use('/api/my/restaurant', myRestaurantRoute);
+app.use('/api/restaurant', restaurantRoute);
 
 mongoose
   .connect(process.env.MONGO_URL as string)

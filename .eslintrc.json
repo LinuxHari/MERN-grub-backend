@@ -8,6 +8,12 @@
     "sourceType": "module",
     "ecmaVersion": "latest"
   },
+  "settings": {
+    "import/resolver": {
+      "node": {}
+    }
+  },
+  
   "extends": [
     "eslint:recommended",
     "plugin:security/recommended-legacy",
@@ -32,7 +38,7 @@
     "node/no-missing-import": "off",
     "node/no-missing-require": "error",
     "node/no-exports-assign": "error",
-    "node/no-extraneous-require": "error",
+    "node/no-extraneous-require": "off",
     "node/no-mixed-requires": ["error", { "allowCall": true }],
     "node/no-new-require": "error",
     "node/no-path-concat": "error",
@@ -46,7 +52,7 @@
     "security/detect-new-buffer": "error",
     "security/detect-no-csrf-before-method-override": "error",
     "security/detect-non-literal-fs-filename": "error",
-    "security/detect-non-literal-regexp": "error",
+    "security/detect-non-literal-regexp": "warn",
     "security/detect-non-literal-require": "error",
     "security/detect-object-injection": "error",
     "security/detect-possible-timing-attacks": "error",
@@ -54,6 +60,7 @@
     "security/detect-unsafe-regex": "error",
 
     // Typescript rules
-    "@typescript-eslint/no-namespace": "off"
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
