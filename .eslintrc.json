@@ -13,7 +13,7 @@
       "node": {}
     }
   },
-  
+
   "extends": [
     "eslint:recommended",
     "plugin:security/recommended-legacy",
@@ -38,7 +38,7 @@
     "node/no-missing-import": "off",
     "node/no-missing-require": "error",
     "node/no-exports-assign": "error",
-    "node/no-extraneous-require": "off",
+    "node/no-extraneous-import": "off",
     "node/no-mixed-requires": ["error", { "allowCall": true }],
     "node/no-new-require": "error",
     "node/no-path-concat": "error",
