@@ -6,6 +6,7 @@ import myUserRoute from './routes/MyUserRoute';
 import myRestaurantRoute from './routes/MyRestaurantRoute';
 import restaurantRoute from './routes/RestaurantRoute';
 import { v2 as cloudinary } from 'cloudinary';
+import orderRoute from './routes/OrderRoutes';
 
 const environment = process.env.NODE_ENV || 'development';
 
@@ -23,22 +24,16 @@ cloudinary.config({
 
 const app = express();
 
+app.use(cors({origin: process.env.FRONTEND_URL}));
+
+app.use('/api/order/checkout/webhook', express.raw({ type: '*/*' }));
+
 app.use(express.json());
-
-const origin =
-  environment === 'production'
-    ? process.env.FRONTEND_URL
-    : new RegExp('https://mern-grub-[a-z0-9]{9}-hariharan-manohars-projects.vercel.app');
-
-app.use(
-  cors({
-    origin
-  })
-);
 
 app.use('/api/my/user', myUserRoute);
 app.use('/api/my/restaurant', myRestaurantRoute);
 app.use('/api/restaurant', restaurantRoute);
+app.use('/api/order', orderRoute);
 
 mongoose
   .connect(process.env.MONGO_URL as string)

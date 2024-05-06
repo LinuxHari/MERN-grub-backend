@@ -1,5 +1,22 @@
+/* eslint-disable security/detect-non-literal-regexp */
 import { Request, Response } from 'express';
 import Restaurant from '../model/restaurantModel';
+
+const getRestaurant = async (req: Request, res: Response) => {
+  try {
+    const restaurantId = req.params.restaurantId;
+
+    const restaurant = await Restaurant.findById(restaurantId);
+    if (!restaurantId) {
+      return res.status(404).json({
+        message: 'restaurnat not found'
+      });
+    }
+    res.json(restaurant);
+  } catch (error) {
+    res.status(500).json({ messae: 'Something went wrong' });
+  }
+};
 
 const searchRestaurant = async (req: Request, res: Response) => {
   try {
@@ -29,7 +46,7 @@ const searchRestaurant = async (req: Request, res: Response) => {
     }
     if (searchQuery) {
       const searchRegex = new RegExp(searchQuery, 'i');
-      query['$or'] = [{ restrauntName: searchRegex }, { cuisines: { $in: [searchRegex] } }];
+      query['$or'] = [{ restaurantName: searchRegex }, { cuisines: { $in: [searchRegex] } }];
     }
 
     const pageSize = 10;
@@ -57,5 +74,6 @@ const searchRestaurant = async (req: Request, res: Response) => {
 };
 
 export default {
+  getRestaurant,
   searchRestaurant
 };
