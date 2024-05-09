@@ -23,7 +23,10 @@ type CheckoutSessionRequest = {
 
 const getMyOrders = async (req: Request, res: Response) => {
   try {
-    const orders = await Order.find({ user: req.userId }).populate('restaurant').populate('user').sort({createdAt: -1});
+    const orders = await Order.find({ user: req.userId })
+      .populate('restaurant')
+      .populate('user')
+      .sort({ createdAt: -1 });
 
     res.json(orders);
   } catch (error) {
@@ -45,10 +48,6 @@ const stripeWebhookHandler = async (req: Request, res: Response) => {
     if (!order) {
       return res.status(404).json({ message: 'Order not found' });
     }
-
-    // eslint-disable-next-line no-console
-    console.log(event.data);
-    
 
     order.totalAmount = event.data.object.amount_total;
     order.status = 'paid';
