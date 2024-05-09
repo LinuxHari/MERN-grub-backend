@@ -46,6 +46,10 @@ const stripeWebhookHandler = async (req: Request, res: Response) => {
       return res.status(404).json({ message: 'Order not found' });
     }
 
+    // eslint-disable-next-line no-console
+    console.log(event.data);
+    
+
     order.totalAmount = event.data.object.amount_total;
     order.status = 'paid';
 
