@@ -4,13 +4,7 @@ import jwt from 'jsonwebtoken';
 import User from '../model/userModel';
 import dotenv from 'dotenv';
 
-const environment = process.env.NODE_ENV || 'development';
-
-if (environment === 'production') {
-  dotenv.config({ path: '.env' });
-} else if (environment === 'development') {
-  dotenv.config({ path: '.env.development' });
-}
+dotenv.config()
 
 declare global {
   namespace Express {
