@@ -14,7 +14,7 @@ const getRestaurant = async (req: Request, res: Response) => {
     }
     res.json(restaurant);
   } catch (error) {
-    res.status(500).json({ messae: 'Something went wrong' });
+    res.status(500).json({ message: 'Something went wrong' });
   }
 };
 
@@ -69,7 +69,7 @@ const searchRestaurant = async (req: Request, res: Response) => {
     };
     res.json(response);
   } catch (error) {
-    res.status(500).json({ messae: 'Something went wrong' });
+    res.status(500).json({ message: 'Something went wrong' });
   }
 };
 

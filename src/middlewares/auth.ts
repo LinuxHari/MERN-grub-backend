@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import User from '../model/userModel';
 import dotenv from 'dotenv';
 
-dotenv.config()
+dotenv.config();
 
 declare global {
   namespace Express {
